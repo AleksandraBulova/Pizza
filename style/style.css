@@ -1,0 +1,66 @@
+body {
+  background-color: #FFDF8C;
+  padding: 50px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-weight: 400;
+}
+
+.global_wrapper {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  height: 100%;
+  width: 100%;
+  padding: 49px 48px 96px 67px;
+  box-sizing: border-box;
+}
+
+.global_header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #F6F6F6;
+}
+
+.logo_name {
+  display: flex;
+  justify-content: space-between;
+  width: 316px;
+  padding-bottom: 40px;
+}
+
+.logo_name img{
+  width: 38px;
+  height: 38px;
+}
+
+.react_pizza h1 {
+  margin: 0;
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.react_pizza p{
+  margin: 0;
+  color: #7B7B7B;
+  font-size: 16px;
+}
+
+
+.basket {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 23px;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  border: none;
+  border-radius: 50px;
+  background-color: #FE5F1E;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.basket_divider {
+  width: 1px;
+  height: 25px;
+  background-color: #FFFFFF;
+}
