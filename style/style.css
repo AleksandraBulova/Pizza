@@ -64,3 +64,54 @@ body {
   height: 25px;
   background-color: #FFFFFF;
 }
+
+.menu_filter,
+.filter ul,
+.sort {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.filter li {
+  list-style-type: none;
+}
+
+.menu_filter {
+  margin-top: 40px;
+}
+
+.button_filter,
+.button_filter.active {
+  background-color: #F9F9F9;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  padding: 0 25px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 9px;
+}
+
+.button_filter.active {
+  background-color: #282828;
+  color: #FFFFFF;
+}
+
+.sort {
+  width: 225px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.sort_selection {
+  font-weight: 400;
+  font-size: 14px;
+  color: #FE5F1E;
+}
