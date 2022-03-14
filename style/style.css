@@ -100,13 +100,13 @@ body {
   align-items: center;
 }
 
-.button_filter.active {
+.button_filter.active,
+.button_filter:hover {
   background-color: #282828;
   color: #FFFFFF;
 }
 
 .sort {
-  /* width: 225px; */
   display: flex;
   gap: 10px;
   justify-content: space-between;
@@ -118,6 +118,45 @@ body {
 .sort_selection {
   font-weight: 400;
   font-size: 14px;
+  color: #FE5F1E;
+  cursor: pointer;
+  position: relative;
+}
+
+.selection_box {
+  position: absolute;
+  background: #FFFFFF;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  width: 132px;
+  height: 136px;
+  right: 90px;
+  top: 275px;
+  padding: 5px 0;
+}
+
+.selection_box li {
+  list-style-type: none; 
+  margin: 0; 
+}
+
+.selection_box ul {
+  padding: 0;
+  margin: 0;
+}
+
+.selection_box li button {
+  border: none;
+  background-color: #FFFFFF;
+  padding: 10px 22px 11px 14px;
+  width: 135px;
+  cursor: pointer;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.selection_box li button:hover {
+  background-color: #FE5F1E0D;
   color: #FE5F1E;
 }
 
@@ -131,6 +170,7 @@ body {
 .all_pizza h2 {
   font-weight: 700;
   font-size: 32px;
+  margin: 32px 0 35px 0;
 }
 
 .pizza h3{
@@ -211,7 +251,16 @@ body {
   border-radius: 30px;
   font-weight: 700;
   font-size: 18px;
-  padding: 11px 21px 14px 17px;
+  padding: 0 21px 0 17px;
+  height: 40px;
   display: flex;
+  align-items: center;
   gap: 0 10px;
+  cursor: pointer;
+  border: 1px solid #EB5A1E;
+}
+
+.price_addition_pizza button:hover {
+  background-color: #EB5A1E;
+  color: #FFFFFF;
 }
