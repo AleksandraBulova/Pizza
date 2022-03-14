@@ -18,13 +18,14 @@ body {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #F6F6F6;
+  padding-bottom: 40px;
 }
 
 .logo_name {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 316px;
-  padding-bottom: 40px;
 }
 
 .logo_name img{
@@ -74,6 +75,10 @@ body {
   padding: 0;
 }
 
+.filter ul {
+  gap: 9px;
+}
+
 .filter li {
   list-style-type: none;
 }
@@ -93,7 +98,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 9px;
 }
 
 .button_filter.active {
@@ -102,8 +106,9 @@ body {
 }
 
 .sort {
-  width: 225px;
+  /* width: 225px; */
   display: flex;
+  gap: 10px;
   justify-content: space-between;
   align-items: center;
   font-weight: 700;
@@ -114,4 +119,99 @@ body {
   font-weight: 400;
   font-size: 14px;
   color: #FE5F1E;
+}
+
+.list_pizza{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 65px 5px;
+}
+
+.all_pizza h2 {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.pizza h3{
+  margin: 0;
+  margin-top: 11px;
+  margin-bottom: 22px;
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+}
+
+.options_pizza {
+  background-color: #F3F3F3;
+  border-radius: 10px;
+  width: 280px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px 0;
+  margin-bottom: 24px;
+}
+
+.dough_pizza {
+  display: flex;
+  gap: 0 3px;
+}
+
+.size_pizza {
+  display: flex;
+  gap: 0 26px;
+}
+
+.options_pizza button,
+.options_pizza button.active{
+  border: none;
+  cursor: pointer;
+}
+
+.options_pizza button.active{
+  background-color: #FFFFFF;
+  border-radius: 5px;
+}
+
+
+.dough_pizza button {
+  padding: 7px 30px 10px 30px;
+  margin-top: 7px;
+  background-color: #F3F3F3;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.size_pizza button {
+  padding: 7px 15px 10px 15px;
+  margin-bottom: 7px;
+  background-color: #F3F3F3;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.price_addition_pizza {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price_pizza {
+  font-weight: 700;
+  font-size: 22px;
+  display: flex;
+  gap: 0 10px;
+  align-items: center;
+}
+
+.price_addition_pizza button {
+  border-color: #EB5A1E;
+  background-color: #FFFFFF;
+  color: #EB5A1E;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 11px 21px 14px 17px;
+  display: flex;
+  gap: 0 10px;
 }
