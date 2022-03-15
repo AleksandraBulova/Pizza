@@ -312,6 +312,15 @@ a {
   cursor: pointer;
 }
 
+.delet_basket:hover svg path {
+  stroke:#FE5F1E;
+}
+
+.delet_basket:hover span {
+  color: #FE5F1E;
+}
+
+
 .line,
 .type_pizza,
 .changes_pizza {
@@ -362,20 +371,10 @@ a {
   border: 2px solid #FE5F1E;
   border-radius: 50%;
   cursor: pointer;
-}
-
-.minus_pizza,
-.plus_pizza {
   color: #FE5F1E;
   align-items: center;
-}
-
-.minus_pizza {
-  padding: 5px 6px;
-}
-
-.plus_pizza {
-  padding: 5px;
+  width: 32px;
+  height: 32px;
 }
 
 .number_pizza {
@@ -390,18 +389,22 @@ a {
   color: #000000;
 }
 
-.remove_pizza button {
+.remove_pizza {
   border: none;
   background-color: #FFFFFF;
   border: 2px solid #D7D7D7;
   border-radius: 50%;
   cursor: pointer;
-}
-
-.remove {
   color: #D7D7D7;
   padding: 5px 6px;
   align-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.remove_pizza:hover {
+  border: 2px solid #EB5A1E;
+  color: #EB5A1E;
 }
 
 .order_total {
@@ -460,13 +463,90 @@ a {
   color: #D3D3D3;
 }
 
+.come_back:hover {
+  background-color: #282828;
+}
+
+
 .pay_pizza {
   padding: 17px 31px;
   border: none;
-  background-color: #FE5F1E;
+  border: 2px solid #FE5F1E;
+  background-color: #FFFFFF;
   border-radius: 30px;
   cursor: pointer;
-  color: #FFFFFF;
+  color: #FE5F1E;
   font-weight: 700;
   font-size: 16px;
+}
+
+.pay_pizza:hover {
+  background-color: #FE5F1E;
+  color: #FFFFFF;
+}
+
+.wrapper {
+  width: 547px;
+  margin: auto;
+}
+
+.empty_basket{
+  margin: 163px 0 15px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+
+.empty_basket img {
+  width: 32px;
+  height: 32px;
+}
+
+.empty_basket h2 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 32px;
+  color: #000000;
+}
+
+.basket_picture {
+  display: block;
+  width: 300px;
+  height: 255px;
+  margin: auto;
+  margin-bottom: 74px;
+  text-align: center;
+}
+
+.text_empty_basket p {
+  margin: 0;
+  font-size: 18px;
+  color: #777777;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.text_empty_basket {
+  margin-bottom: 45px;
+}
+
+.back_pizza {
+  align-items: center;
+  padding: 17px 31px;
+  border: none;
+  background-color: #FFFFFF;
+  border: 1px solid #777777;
+  border-radius: 30px;
+  cursor: pointer;
+  color: #777777;
+  font-weight: 700;
+  font-size: 16px;
+  display: block;
+  margin: auto;
+}
+
+.back_pizza:hover {
+  background-color: #282828;
+  color: #FFFFFF;
 }
