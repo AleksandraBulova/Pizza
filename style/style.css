@@ -192,6 +192,11 @@ a {
   text-align: center;
 }
 
+.pizza img {
+  display: block;
+  margin: auto;
+}
+
 .options_pizza {
   background-color: #F3F3F3;
   border-radius: 10px;
@@ -201,6 +206,11 @@ a {
   flex-wrap: wrap;
   gap: 7px 0;
   margin-bottom: 24px;
+  height: 95px;
+}
+
+.options_pizza form {
+  margin-top: 11px;
 }
 
 .dough_pizza {
@@ -213,33 +223,36 @@ a {
   gap: 0 26px;
 }
 
-.options_pizza button,
-.options_pizza button.active{
-  border: none;
-  cursor: pointer;
+.dough_pizza input[type="radio"],
+.size_pizza input[type="radio"]{
+  display: none;
 }
 
-.options_pizza button.active,
-.options_pizza button:hover{
-  background-color: #FFFFFF;
+.dough_pizza input[type="radio"]:checked+label,
+.size_pizza input[type="radio"]:checked+label,
+.dough_pizza input+label:hover,
+.size_pizza input+label:hover {
+  background-color: #ffffff;
   border-radius: 5px;
 }
 
-
-.dough_pizza button {
+.dough_pizza label{
+  border: none;
   padding: 7px 30px 10px 30px;
   margin-top: 7px;
   background-color: #F3F3F3;
   font-weight: 700;
   font-size: 14px;
+  cursor: pointer;
 }
 
-.size_pizza button {
+.size_pizza label{
   padding: 7px 15px 10px 15px;
   margin-bottom: 7px;
   background-color: #F3F3F3;
   font-weight: 700;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .price_addition_pizza {
