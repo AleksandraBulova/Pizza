@@ -2,7 +2,9 @@ function Pizza(name, img, id, dough) {
   this.name = name;
   this.img = img;
   this.id = id;
-  this.dough = dough
+  this.dough = dough,
+  this.activeDough = 'thin',
+  this.activeSize = 26
 }
 
 let cheeseburger = new Pizza('Чизбургер-пицца', '/assets/images/cheeseburger_pizza.png', 1, {
@@ -21,28 +23,28 @@ let cheeseburger = new Pizza('Чизбургер-пицца', '/assets/images/ch
 
 let cheese = new Pizza('Сырная', '/assets/images/cheese.png', 2, {
     thin: {
-      26: 300,
-      30: 340,
-      40: 380
+      26: 280,
+      30: 320,
+      40: 360
     },
     traditional: {
-      26: 320,
-      30: 360,
-      40: 400
+      26: 340,
+      30: 380,
+      40: 420
     }
   }
 )
 
 let shrimps = new Pizza('Креветки по-азиатски', '/assets/images/shrimps.png', 3, {
     thin: {
-      26: 300,
-      30: 340,
-      40: 380
+      26: 360,
+      30: 400,
+      40: 440
     },
     traditional: {
-      26: 320,
-      30: 360,
-      40: 400
+      26: 380,
+      30: 440,
+      40: 460
     }
   }
 )
@@ -77,28 +79,28 @@ let cheeseburger1 = new Pizza('Чизбургер-пицца', '/assets/images/c
 
 let cheese1 = new Pizza('Сырная', '/assets/images/cheese.png', 6, {
     thin: {
-      26: 300,
-      30: 340,
-      40: 380
+      26: 280,
+      30: 320,
+      40: 360
     },
     traditional: {
-      26: 320,
-      30: 360,
-      40: 400
+      26: 340,
+      30: 380,
+      40: 420
     }
   }
 )
 
 let shrimps1 = new Pizza('Креветки по-азиатски', '/assets/images/shrimps.png', 7, {
     thin: {
-      26: 300,
-      30: 340,
-      40: 380
+      26: 360,
+      30: 400,
+      40: 440
     },
     traditional: {
-      26: 320,
-      30: 360,
-      40: 400
+      26: 380,
+      30: 440,
+      40: 460
     }
   }
 )
