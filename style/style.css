@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #FFDF8C;
   padding: 50px;
@@ -65,6 +69,11 @@ body {
   width: 1px;
   height: 25px;
   background-color: #FFFFFF;
+}
+
+.basket_quantity{
+  display: flex;
+  gap: 6px;
 }
 
 .menu_filter,
@@ -171,7 +180,12 @@ a {
   color: #FE5F1E;
 }
 
-.list_pizza{
+.pizza_list_line {
+  border-bottom: 1px solid #F6F6F6;
+  padding-top: 40px;
+}
+
+.list_pizza {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -291,10 +305,10 @@ a {
 }
 
 .basket_pizza {
-  width: 821px;
+  width: 1050px;
   margin: auto;
-  padding-top: 95px;
-  padding-bottom: 130px;
+  padding-top: 80px;
+  padding-bottom: 110px;
 }
 
 .menu_basket,
@@ -342,10 +356,15 @@ a {
 
 
 .line,
-.type_pizza,
 .changes_pizza {
   display: flex;
   justify-content: space-between;
+}
+
+.type_pizza {
+  display: flex;
+  gap: 15px;
+  width: 332px;
 }
 
 .line {
