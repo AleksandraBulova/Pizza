@@ -1,184 +1,272 @@
-export function createAndAppendPizza(el_pizza) {
+import { pizzes } from './script.js';
 
-  let pizza = document.createElement('div');
-  pizza.className = 'pizza';
-  pizza.id = el_pizza.id;
+let cartPizzesUI = [];
+let cartPizzesData = [];
 
-  let pizzaImg = document.createElement('img');
-  pizzaImg.src = el_pizza.img;
+export function createUIPizza(pizza) {
+
+  const pizzaContainer = document.createElement('div');
+  pizzaContainer.className = 'pizza';
+  pizzaContainer.id = pizza.id;
+  pizzaContainer.type = pizza.type;
+
+  const pizzaImg = document.createElement('img');
+  pizzaImg.src = pizza.img;
   pizzaImg.alt = 'pizza';
-  pizza.append(pizzaImg);
+  pizzaContainer.append(pizzaImg);
 
-  let namePizza = document.createElement('h3');
-  pizzaImg.after(namePizza);
-  namePizza.innerHTML = el_pizza.name;
+  const pizzaName = document.createElement('h3');
+  pizzaImg.after(pizzaName);
+  pizzaName.innerHTML = pizza.name;
 
-  let pizzaOptions = document.createElement('form');
+  const pizzaOptionsHandler = (event) => {
+    const pizzaElement = event.path.find(el => el.className === 'pizza');
+    const pizzaId = Number(pizzaElement.id);
+    const currentPizza = pizzes.find(el => el.id === pizzaId);
+    if (event.target.value === 'traditional' || event.target.value === 'thin'){
+      currentPizza.activeDough = event.target.value;
+    } else {
+      currentPizza.activeSize = Number(event.target.value);
+    }
+    pizzaElement.querySelector('.price').innerHTML = `${currentPizza.dough[currentPizza.activeDough][currentPizza.activeSize]} ₽`;
+  }
+
+  const pizzaOptions = document.createElement('form');
   pizzaOptions.className = 'options_pizza';
-  namePizza.after(pizzaOptions);
+  pizzaName.after(pizzaOptions);
+  pizzaOptions.addEventListener('change', pizzaOptionsHandler);
 
-  let pizzaDough = document.createElement('div');
+  const pizzaDough = document.createElement('div');
   pizzaDough.className = 'dough_pizza';
   pizzaOptions.append(pizzaDough);
 
-  let thinPizza = document.createElement('input');
-  thinPizza.type = 'radio';
-  thinPizza.id = `radio-dough-${el_pizza.id}-1`;
-  thinPizza.name = 'radios-dough';
-  thinPizza.value = 'thin';
-  thinPizza.checked = el_pizza.activeDough === 'thin';
-  pizzaDough.append(thinPizza);
+  const thinOption = document.createElement('input');
+  thinOption.type = 'radio';
+  thinOption.id = `radio-dough-${pizza.id}-thin`;
+  thinOption.name = 'radios-dough';
+  thinOption.value = 'thin';
+  thinOption.checked = pizza.activeDough === 'thin';
+  pizzaDough.append(thinOption);
 
-  let thinDough = document.createElement('label');
-  thinDough.htmlFor = `radio-dough-${el_pizza.id}-1`;
-  thinPizza.after(thinDough);
+  const thinDough = document.createElement('label');
+  thinDough.htmlFor = `radio-dough-${pizza.id}-thin`;
+  thinOption.after(thinDough);
   thinDough.innerHTML = 'тонкое';
 
-  let traditionalPizza = document.createElement('input');
-  traditionalPizza.type = 'radio';
-  traditionalPizza.id = `radio-dough-${el_pizza.id}-2`;
-  traditionalPizza.name = 'radios-dough';
-  traditionalPizza.value = 'traditional';
-  traditionalPizza.checked = el_pizza.activeDough === 'traditional';
-  thinDough.after(traditionalPizza);
+  const traditionalOption = document.createElement('input');
+  traditionalOption.type = 'radio';
+  traditionalOption.id = `radio-dough-${pizza.id}-traditional`;
+  traditionalOption.name = 'radios-dough';
+  traditionalOption.value = 'traditional';
+  traditionalOption.checked = pizza.activeDough === 'traditional';
+  thinDough.after(traditionalOption);
 
-  let traditionalDough = document.createElement('label');
-  traditionalDough.htmlFor = `radio-dough-${el_pizza.id}-2`;
-  traditionalPizza.after(traditionalDough);
+  const traditionalDough = document.createElement('label');
+  traditionalDough.htmlFor = `radio-dough-${pizza.id}-traditional`;
+  traditionalOption.after(traditionalDough);
   traditionalDough.innerHTML = 'традиционное';
 
-  let pizzaSize = document.createElement('div');
+  const pizzaSize = document.createElement('div');
   pizzaSize.className = 'size_pizza';
   pizzaDough.after(pizzaSize);
 
-  let littlePizza = document.createElement('input');
-  littlePizza.type = 'radio';
-  littlePizza.id = `radios-size-${el_pizza.id}-1`;
-  littlePizza.name = 'radios-size';
-  littlePizza.value = 26;
-  littlePizza.checked = el_pizza.activeSize === 26;
-  pizzaSize.append(littlePizza);
+  const pizzaLittle = document.createElement('input');
+  pizzaLittle.type = 'radio';
+  pizzaLittle.id = `radios-size-${pizza.id}-26см`;
+  pizzaLittle.name = 'radios-size';
+  pizzaLittle.value = 26;
+  pizzaLittle.checked = pizza.activeSize === 26;
+  pizzaSize.append(pizzaLittle);
 
-  let littleSize = document.createElement('label');
-  littleSize.htmlFor = `radios-size-${el_pizza.id}-1`;
-  littlePizza.after(littleSize);
-  littleSize.innerHTML = '26 см.';
+  const sizeLittle = document.createElement('label');
+  sizeLittle.htmlFor = `radios-size-${pizza.id}-26см`;
+  pizzaLittle.after(sizeLittle);
+  sizeLittle.innerHTML = '26 см.';
 
-  let middlePizza = document.createElement('input');
-  middlePizza.type = 'radio';
-  middlePizza.id = `radios-size-${el_pizza.id}-2`;
-  middlePizza.name = 'radios-size';
-  middlePizza.value = 30;
-  middlePizza.checked = el_pizza.activeSize === 30;
-  littleSize.after(middlePizza);
+  const pizzaMiddle = document.createElement('input');
+  pizzaMiddle.type = 'radio';
+  pizzaMiddle.id = `radios-size-${pizza.id}-30см`;
+  pizzaMiddle.name = 'radios-size';
+  pizzaMiddle.value = 30;
+  pizzaMiddle.checked = pizza.activeSize === 30;
+  sizeLittle.after(pizzaMiddle);
 
-  let middleSize = document.createElement('label');
-  middleSize.htmlFor = `radios-size-${el_pizza.id}-2`;
-  middlePizza.after(middleSize);
-  middleSize.innerHTML = '30 см.';
+  const sizeMiddle = document.createElement('label');
+  sizeMiddle.htmlFor = `radios-size-${pizza.id}-30см`;
+  pizzaMiddle.after(sizeMiddle);
+  sizeMiddle.innerHTML = '30 см.';
 
-  let bigPizza = document.createElement('input');
-  bigPizza.type = 'radio';
-  bigPizza.id = `radios-size-${el_pizza.id}-3`;
-  bigPizza.name = 'radios-size';
-  bigPizza.value = 40;
-  bigPizza.checked = el_pizza.activeSize === 40;
-  middleSize.after(bigPizza);
+  const pizzaBig = document.createElement('input');
+  pizzaBig.type = 'radio';
+  pizzaBig.id = `radios-size-${pizza.id}-40см`;
+  pizzaBig.name = 'radios-size';
+  pizzaBig.value = 40;
+  pizzaBig.checked = pizza.activeSize === 40;
+  sizeMiddle.after(pizzaBig);
 
-  let bigSize = document.createElement('label');
-  bigSize.htmlFor = `radios-size-${el_pizza.id}-3`;
-  bigPizza.after(bigSize);
-  bigSize.innerHTML = '40 см.';
+  const sizeBig = document.createElement('label');
+  sizeBig.htmlFor = `radios-size-${pizza.id}-40см`;
+  pizzaBig.after(sizeBig);
+  sizeBig.innerHTML = '40 см.';
 
-  let pizzaPriceAddition = document.createElement('div');
+  const pizzaPriceAddition = document.createElement('div');
   pizzaPriceAddition.className = 'price_addition_pizza';
   pizzaOptions.after(pizzaPriceAddition);
 
-  let pizzaPrice = document.createElement('div');
+  const pizzaPrice = document.createElement('div');
   pizzaPrice.className = 'price_pizza';
   pizzaPriceAddition.append(pizzaPrice);
 
-  let pizzaText = document.createElement('div');
-  pizzaPrice.append(pizzaText);
-  pizzaText.innerHTML = 'от';
+  const prePriceText = document.createElement('div');
+  pizzaPrice.append(prePriceText);
+  prePriceText.innerHTML = 'от';
 
-  let price = document.createElement('div');
+  const price = document.createElement('div');
   price.className = 'price';
-  pizzaText.after(price);
-  price.innerHTML = `${el_pizza.dough[el_pizza.activeDough][el_pizza.activeSize]} ₽`;
+  prePriceText.after(price);
+  price.innerHTML = `${pizza.dough[pizza.activeDough][pizza.activeSize]} ₽`;
 
-  let buttonPizzaAdd = document.createElement('button');
-  buttonPizzaAdd.className = 'button_pizza_add';
-  pizzaPrice.after(buttonPizzaAdd);
+  const pizzaAddToCartButtonHandler = (event) => {
+    const pizzaElement = event.path.find(el => el.className === 'pizza');
+    const pizzaId = Number(pizzaElement.id);
+    const currentPizza = pizzes.find(el => el.id === pizzaId);
 
-  let add = document.createElement('div');
-  buttonPizzaAdd.append(add);
-  add.innerHTML = '+';
+    const cartPizzaElement = createCartPizza(currentPizza)
+    addCartPizzaToUI(cartPizzaElement);
+    cartPizzesUI.push(cartPizzaElement);
 
-  let pizzaAdd = document.createElement('div');
-  add.after(pizzaAdd);
+    cartPizzesData.push(currentPizza);
+
+    document.querySelector('.number_pizzas').innerHTML = `${cartPizzesData.length} шт.`;
+    document.querySelector('.number_pizza_basket').innerHTML = cartPizzesData.length;
+  
+    const resultSum = cartPizzesData.reduce((sum, el) => sum + el.dough[el.activeDough][el.activeSize], 0);
+    document.querySelector('.grand_total').innerHTML = `${resultSum} ₽`;
+    document.querySelector('.basket_money').innerHTML = `${resultSum} ₽`;
+  }
+
+  const pizzaAddToCartButton = document.createElement('button');
+  pizzaAddToCartButton.className = 'button_pizza_add';
+  pizzaPrice.after(pizzaAddToCartButton);
+  pizzaAddToCartButton.addEventListener('click', pizzaAddToCartButtonHandler)
+
+  const pizzaPlus = document.createElement('div');
+  pizzaAddToCartButton.append(pizzaPlus);
+  pizzaPlus.innerHTML = '+';
+
+  const pizzaAdd = document.createElement('div');
+  pizzaPlus.after(pizzaAdd);
   pizzaAdd.innerHTML = 'Добавить';
 
-
-  document.querySelector('.list_pizza').append(pizza);
+  return {
+    UIPizza: pizzaContainer, 
+    removeListenerFromButtonToCart: () => {
+      pizzaAddToCartButton.removeEventListener('click', pizzaAddToCartButtonHandler)
+    },
+    removeListenerFromPizzaForm: () => {
+      pizzaOptions.removeEventListener('change', pizzaOptionsHandler)
+    }
+  };
 }
 
+export function addPizzaToUI(pizzaToUI) {
+  document.querySelector('.list_pizza').append(pizzaToUI.UIPizza);
+}
 
-export function createBasketPizza(el_basket_pizza) {
+export function removePizzaFromUI(pizzaInfo) {
+  pizzaInfo.removeListenerFromButtonToCart();
+  pizzaInfo.removeListenerFromPizzaForm();
+  pizzaInfo.UIPizza.parentNode.removeChild(pizzaInfo.UIPizza);
+}
 
-  let linePizza = document.createElement('div');
-  linePizza.className = 'line';
-  linePizza.id = el_basket_pizza.id;
+export function createCartPizza(cart_pizza) {
 
-  let typePizza = document.createElement('div');
-  typePizza.className = 'type_pizza';
-  linePizza.append(typePizza);
+  const pizzaLineCart = document.createElement('div');
+  pizzaLineCart.className = 'line';
+  pizzaLineCart.id = cart_pizza.id;
 
-  let pizzaBasketImg = document.createElement('img');
-  pizzaBasketImg.src = `/assets/images/mini_cheeseburger_pizza.png`;
-  pizzaBasketImg.alt = 'pizza';
-  typePizza.append(pizzaBasketImg);
+  const pizzaType = document.createElement('div');
+  pizzaType.className = 'type_pizza';
+  pizzaLineCart.append(pizzaType);
 
-  let descriptionPizza = document.createElement('div');
-  descriptionPizza.className = 'description_pizzaa';
-  pizzaBasketImg.after(descriptionPizza);
+  const pizzaImgCart = document.createElement('img');
+  pizzaImgCart.src = cart_pizza.img;
+  pizzaImgCart.alt = 'pizza';
+  pizzaType.append(pizzaImgCart);
 
-  let nameBasketPizza = document.createElement('h2');
-  descriptionPizza.append(nameBasketPizza);
-  nameBasketPizza.innerHTML = el_basket_pizza.name;
+  const pizzaDescription = document.createElement('div');
+  pizzaDescription.className = 'description_pizzaa';
+  pizzaImgCart.after(pizzaDescription);
 
-  let characteristicsPizza = document.createElement('div');
-  characteristicsPizza.className = 'characteristics_pizza';
-  nameBasketPizza.after(characteristicsPizza);
-  characteristicsPizza.innerHTML = `${el_basket_pizza.activeDough === 'thin' ? 'тонкое' : 'традиционное'},
-  ${el_basket_pizza.activeSize} см.`;
+  const pizzaNameCart = document.createElement('h2');
+  pizzaDescription.append(pizzaNameCart);
+  pizzaNameCart.innerHTML = cart_pizza.name;
 
-  let changesPizza = document.createElement('div');
-  changesPizza.className = 'changes_pizza';
-  linePizza.append(changesPizza);
+  const pizzaCharacteristics = document.createElement('div');
+  pizzaCharacteristics.className = 'characteristics_pizza';
+  pizzaNameCart.after(pizzaCharacteristics);
+  pizzaCharacteristics.innerHTML = `${cart_pizza.activeDough === 'thin' ? 'тонкое' : 'традиционное'},
+  ${cart_pizza.activeSize} см.`;
 
-  let minusPizza = document.createElement('button');
-  changesPizza.append(minusPizza);
-  minusPizza.innerHTML = `-`;
+  const pizzaChanges = document.createElement('div');
+  pizzaChanges.className = 'changes_pizza';
+  pizzaLineCart.append(pizzaChanges);
 
-  let numberPizza = document.createElement('div');
-  numberPizza.className = 'number_pizza';
-  minusPizza.after(numberPizza);
-  numberPizza.innerHTML = `1`;
+  const pizzaMinus = document.createElement('button');
+  pizzaChanges.append(pizzaMinus);
+  pizzaMinus.innerHTML = `-`;
 
-  let plusPizza = document.createElement('button');
-  numberPizza.after(plusPizza);
-  plusPizza.innerHTML = `+`;
+  const pizzaNumber = document.createElement('div');
+  pizzaNumber.className = 'number_pizza';
+  pizzaMinus.after(pizzaNumber);
+  pizzaNumber.innerHTML = `1`;
 
-  let costPizza = document.createElement('div');
-  costPizza.className = 'cost_pizza';
-  linePizza.append(costPizza);
-  costPizza.innerHTML = `${el_basket_pizza.dough[el_basket_pizza.activeDough][el_basket_pizza.activeSize]} ₽`;
+  const pizzaPlus = document.createElement('button');
+  pizzaNumber.after(pizzaPlus);
+  pizzaPlus.innerHTML = `+`;
 
-  let removePizza = document.createElement('button');
-  removePizza.className = 'remove_pizza';
-  linePizza.append(removePizza);
-  removePizza.innerHTML = `x`;
-    
-  document.querySelector('.pizza_selection').append(linePizza);
+  const pizzaCost = document.createElement('div');
+  pizzaCost.className = 'cost_pizza';
+  pizzaLineCart.append(pizzaCost);
+  pizzaCost.innerHTML = `${cart_pizza.dough[cart_pizza.activeDough][cart_pizza.activeSize]} ₽`;
+
+  const pizzaRemoveToCartButtonHandler = (event) => {
+    const findedPizza = cartPizzesUI.find(el => `remove-${el.UIPizzaCart.id}` === event.target.id)
+    removeCartPizzaFromUI(findedPizza);
+
+    cartPizzesUI = cartPizzesUI.filter(el => `remove-${el.UIPizzaCart.id}` !== event.target.id);
+ 
+    const pizzaElem = event.path.find(el => el.className === 'line');
+    cartPizzesData = cartPizzesData.filter(el => el.id !== +pizzaElem.id);
+
+    document.querySelector('.number_pizzas').innerHTML = `${cartPizzesData.length} шт.`;
+    document.querySelector('.number_pizza_basket').innerHTML = cartPizzesData.length;
+  
+    const resultSum = cartPizzesData.reduce((sum, el) => sum + el.dough[el.activeDough][el.activeSize], 0);
+    document.querySelector('.grand_total').innerHTML = `${resultSum} ₽`;
+    document.querySelector('.basket_money').innerHTML = `${resultSum} ₽`;
+  }
+
+  const pizzaRemove = document.createElement('button');
+  pizzaRemove.className = 'remove_pizza';
+  pizzaLineCart.append(pizzaRemove);
+  pizzaRemove.innerHTML = `x`;
+  pizzaRemove.id = `remove-${cart_pizza.id}`
+  pizzaRemove.addEventListener('click', pizzaRemoveToCartButtonHandler);
+
+  return {
+    UIPizzaCart: pizzaLineCart, 
+    removeListenerFromPizzaCart: () => {
+      pizzaRemove.removeEventListener('click', pizzaRemoveToCartButtonHandler);
+    }
+  }
+}
+
+export function addCartPizzaToUI(cartPizzaToUI) {
+  document.querySelector('.pizza_selection').append(cartPizzaToUI.UIPizzaCart);
+}
+
+export function removeCartPizzaFromUI(pizzaInfo) {
+  pizzaInfo.removeListenerFromPizzaCart();
+  pizzaInfo.UIPizzaCart.parentNode.removeChild(pizzaInfo.UIPizzaCart);
 }

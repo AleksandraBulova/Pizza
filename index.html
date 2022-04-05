@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/style/style.css">
   <link rel="stylesheet" href="/style/normalize.css">
   <link rel="stylesheet" href="/style/fonts.css">
+  <link rel="shortcut icon" type="image/png" href="./assets/images/favicon.png"/>
   <title>Pizza</title>
 </head>
 <body id="title">
@@ -38,12 +39,12 @@
       <section class="menu_filter">
         <div class="filter">
           <ul>
-            <li><button class="button_filter">Все</button></li>
-            <li><button class="button_filter">Мясные</button></li>
-            <li><button class="button_filter">Вегетарианская</button></li>
-            <li><button class="button_filter">Гриль</button></li>
-            <li><button class="button_filter">Острые</button></li>
-            <li><button class="button_filter">Закрытые</button></li>
+            <li><button id="all" class="button_filter active">Все</button></li>
+            <li><button id="meat" class="button_filter">Мясные</button></li>
+            <li><button id="seafood" class="button_filter">Морские</button></li>
+            <li><button id="cheese" class="button_filter">Сырные</button></li>
+            <li><button id="spicy" class="button_filter">Острые</button></li>
+            <li><button id="closed" class="button_filter">Закрытые</button></li>
           </ul>
         </div>
         <div class="sort">
@@ -63,36 +64,6 @@
     <section class="all_pizza">
       <h2>Все пиццы</h2>
       <div class="list_pizza">
-        <!-- <div class="pizza">
-          <img src="/assets/images/cheeseburger_pizza.png" alt="pizza">
-          <h3>Чизбургер-пицца</h3>
-          <div class="options_pizza">
-            <div class="dough_pizza">
-              <input type="radio" id="radio-dough-1" name="radios-dough" value="тонкое" checked>
-              <label for="radio-dough-1">тонкое</label>
-              <input type="radio" id="radio-dough-2" name="radios-dough" value="традиционное">
-              <label for="radio-dough-2">традиционное</label>
-            </div>
-            <div class="size_pizza">
-              <input type="radio" id="radios-size-1" name="radios-size" value="26 см." checked>
-              <label for="radios-size-1">26 см.</label>
-              <input type="radio" id="radios-size-2" name="radios-size" value="30 см.">
-              <label for="radios-size-2">30 см.</label>
-              <input type="radio" id="radios-size-3" name="radios-size" value="40 см.">
-              <label for="radios-size-3">40 см.</label> 
-            </div>
-          </div>
-          <div class="price_addition_pizza">
-            <div class="price_pizza">
-              <div>от</div>
-              <div class="price">395 ₽</div>
-            </div>
-            <button>
-              <div>+</div>
-              <div>Добавить</div>
-            </button>
-          </div>
-        </div> -->
       </div>
       <div class="pizza_list_line"></div>
     </section>
@@ -120,22 +91,6 @@
       </div>
       <div class="pizza_selection_basket">
         <div class="pizza_selection">
-    <!-- <div class="line">
-          <div class="type_pizza">
-            <img src="/assets/images/mini_cheeseburger_pizza.png" alt="pizza">
-            <div class="description_pizza">
-              <h2>Сырный цыпленок</h2>
-              <div class="characteristics_pizza">тонкое тесто, 26 см.</div>
-            </div>
-          </div>
-          <div class="changes_pizza">
-            <button>-</button>
-            <div class="number_pizza">2</div>
-            <button>+</button>
-          </div>
-          <div class="cost_pizza">770 ₽</div>
-          <button class="remove_pizza">x</button>
-        </div> -->
         </div>
         <div class="order_total">
           <div class="total_pizza">
@@ -165,8 +120,7 @@
     </main>    
   </div>
   <script type="module" src="/utils.js"></script>
-  <script type="module" src="/cart.js"></script>
-  <script type="module" src="/data/pizzaSet.js"></script>
+  <script type="module" src="/data.js"></script>
   <script type="module" src="/script.js"></script>
 </body>
 </html>

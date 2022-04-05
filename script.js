@@ -1,62 +1,97 @@
-import pizzaSet from './data/pizzaSet.js';
-import {createAndAppendPizza} from './utils.js';
-import {createBasketPizza} from './utils.js';
+import { pizzesData } from './data.js';
+import { createUIPizza } from './utils.js';
+import { addPizzaToUI } from './utils.js';
+import { removePizzaFromUI } from './utils.js';
 
-let cartPizzas = [];
+function Pizza(id, name, img, type, dough) {
+  this.id = id;
+  this.name = name;
+  this.img = img;
+  this.type = type;
+  this.dough = dough,
+  this.activeDough = 'thin',
+  this.activeSize = 26
+};
 
-for (let i = 0; i < pizzaSet.length; i++){
-  createAndAppendPizza(pizzaSet[i]);
-}
+export const pizzes = pizzesData.map(el => new Pizza(el.id, el.name, el.img, el.type, el.dough));
 
-const forms = document.querySelectorAll('.options_pizza');
 
-for (let i = 0; i < forms.length; i++) {
-  forms[i].addEventListener('change', (event) => {
-    const pizzaElement = event.path.find(el => el.className === 'pizza');
-    const pizzaId = Number(pizzaElement.id);
-    const currentPizza = pizzaSet.find(el => el.id === pizzaId);
-    if (event.target.value === 'traditional' || event.target.value === 'thin'){
-      currentPizza.activeDough = event.target.value;
-    } else {
-      currentPizza.activeSize = Number(event.target.value);
-    }
-    pizzaElement.querySelector('.price').innerHTML = `${currentPizza.dough[currentPizza.activeDough][currentPizza.activeSize]} ₽`;
-  });
-}
+let addedToUIPizzes = [];
 
-const buttonAdd = document.querySelectorAll('.button_pizza_add');
+window.addEventListener('load', function() {
+  for (let i = 0; i < pizzes.length; i++){
+    const createdPizza = createUIPizza(pizzes[i]);
+    addPizzaToUI(createdPizza);
+    addedToUIPizzes.push(createdPizza);
+  }
+})
 
-for (let i = 0; i < buttonAdd.length; i++) {
-  buttonAdd[i].addEventListener('click', (event) => {
-    const pizzaElement = event.path.find(el => el.className === 'pizza');
-    const pizzaId = Number(pizzaElement.id);
-    const currentPizza = pizzaSet.find(el => el.id === pizzaId);
-    cartPizzas.push(currentPizza);
+const buttonFilter = document.querySelectorAll('.button_filter');
 
-    createBasketPizza(currentPizza);
-
-    const removeButton = document.querySelectorAll('.remove_pizza')[document.querySelectorAll('.remove_pizza').length - 1];
-
-    removeButton.addEventListener('click', (event) => {
-      const pizzaElem = event.path.find(el => el.className === 'line');
-      cartPizzas = cartPizzas.filter(el => el.id !== +pizzaElem.id);
-
-      pizzaElem.parentNode.removeChild(pizzaElem);
-
-      document.querySelector('.number_pizzas').innerHTML = `${cartPizzas.length} шт.`;
-      document.querySelector('.number_pizza_basket').innerHTML = cartPizzas.length;
-
-      const resultSum = cartPizzas.reduce((sum, el) => sum + el.dough[el.activeDough][el.activeSize], 0);
-      document.querySelector('.grand_total').innerHTML = `${resultSum} ₽`;
-      document.querySelector('.basket_money').innerHTML = `${resultSum} ₽`;
+for (let i = 0; i < buttonFilter.length; i++) {
+  buttonFilter[i].addEventListener('click', function(event) {
+    buttonFilter.forEach(el => {
+      el.classList.remove('active');
     })
+    buttonFilter[i].classList.add('active');
 
-    document.querySelector('.number_pizzas').innerHTML = `${cartPizzas.length} шт.`;
-    document.querySelector('.number_pizza_basket').innerHTML = cartPizzas.length;
+    const typePizza = event.target.id;
 
-    const resultSum = cartPizzas.reduce((sum, el) => sum + el.dough[el.activeDough][el.activeSize], 0);
-    document.querySelector('.grand_total').innerHTML = `${resultSum} ₽`;
-    document.querySelector('.basket_money').innerHTML = `${resultSum} ₽`;
+    const removeAllPizzes = () => {
+      for(let i = 0; i < addedToUIPizzes.length; i++) { 
+        removePizzaFromUI(addedToUIPizzes[i]);
+      }
+      addedToUIPizzes = [];
+    }
+
+    const cratePizzes = (pizzes) =>{
+      for (let i = 0; i < pizzes.length; i++){
+        const createdPizza = createUIPizza(pizzes[i]);
+        addPizzaToUI(createdPizza);
+        addedToUIPizzes.push(createdPizza);
+      }
+    }
+
+    let filteredPizzes = [];
+
+    switch(typePizza){
+      case 'all':
+        removeAllPizzes();
+        cratePizzes(pizzes);
+        break;
+      case 'meat':
+        removeAllPizzes();
+        filteredPizzes = pizzes.filter(el => el.type.includes(typePizza));
+        cratePizzes(filteredPizzes);
+        break;
+      case 'seafood':
+        removeAllPizzes();
+        filteredPizzes = pizzes.filter(el => el.type.includes(typePizza));
+        cratePizzes(filteredPizzes);
+        break;  
+      case 'cheese':
+        removeAllPizzes();
+        filteredPizzes = pizzes.filter(el => el.type.includes(typePizza));
+        cratePizzes(filteredPizzes);
+        break; 
+      case 'cheese':
+        removeAllPizzes();
+        filteredPizzes = pizzes.filter(el => el.type.includes(typePizza));
+        cratePizzes(filteredPizzes);
+        break; 
+      case 'spicy':
+        removeAllPizzes();
+        filteredPizzes = pizzes.filter(el => el.type.includes(typePizza));
+        cratePizzes(filteredPizzes);
+        break; 
+      case 'closed':
+        removeAllPizzes();
+        filteredPizzes = pizzes.filter(el => el.type.includes(typePizza));
+        cratePizzes(filteredPizzes);
+        break; 
+      default:
+        removeAllPizzes();
+        cratePizzes(pizzes);
+    }
   })
 }
-

@@ -187,9 +187,8 @@ a {
 
 .list_pizza {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 65px 5px;
+  gap: 65px 60px;
 }
 
 .all_pizza h2 {
@@ -354,6 +353,10 @@ a {
   color: #FE5F1E;
 }
 
+.line img {
+  width: 82px;
+  height: 82px;
+}
 
 .line,
 .changes_pizza {
