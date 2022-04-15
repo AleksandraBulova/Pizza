@@ -2,7 +2,7 @@ export const pizzesData = [
   {
     id: 1,
     name: 'Чизбургер-пицца',
-    img: './assets/images/cheeseburger_pizza.png',
+    img: '/assets/images/cheeseburger_pizza.png',
     type: ['meat'],
     dough: {
       thin: {
