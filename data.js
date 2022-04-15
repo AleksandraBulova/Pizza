@@ -2,7 +2,7 @@ export const pizzesData = [
   {
     id: 1,
     name: 'Чизбургер-пицца',
-    img: '/assets/images/cheeseburger_pizza.png',
+    img: './assets/images/cheeseburger_pizza.png',
     type: ['meat'],
     dough: {
       thin: {
@@ -20,7 +20,7 @@ export const pizzesData = [
   {
     id: 2,
     name: 'Сырная',
-    img: '/assets/images/cheese.png',
+    img: './assets/images/cheese.png',
     type: ['cheese'],
     dough: {
       thin: {
@@ -38,7 +38,7 @@ export const pizzesData = [
   {
     id: 3,
     name: 'Креветки по-азиатски',
-    img: '/assets/images/shrimps.png',
+    img: './assets/images/shrimps.png',
     type: ['seafood', 'spicy'],
     dough: {
       thin: {
@@ -56,7 +56,7 @@ export const pizzesData = [
   {
     id: 4,
     name: 'Сырный цыпленок',
-    img: '/assets/images/cheese_chicken.png',
+    img: './assets/images/cheese_chicken.png',
     type: ['meat', 'cheese'],
     dough: {
       thin: {
@@ -74,7 +74,7 @@ export const pizzesData = [
   {
     id: 5,
     name: 'Бургер-пицца',
-    img: '/assets/images/cheeseburger_pizza.png',
+    img: './assets/images/cheeseburger_pizza.png',
     type: ['meat'],
     dough: {
       thin: {
@@ -92,7 +92,7 @@ export const pizzesData = [
   {
     id: 6,
     name: 'Четыре сыра',
-    img: '/assets/images/cheese.png',
+    img: './assets/images/cheese.png',
     type: ['cheese'],
     dough: {
       thin: {
@@ -110,7 +110,7 @@ export const pizzesData = [
   {
     id: 7,
     name: 'Морская пицца',
-    img: '/assets/images/shrimps.png',
+    img: './assets/images/shrimps.png',
     type: ['seafood'],
     dough: {
       thin: {
@@ -128,7 +128,7 @@ export const pizzesData = [
   {
     id: 8,
     name: 'Французский цыпленок',
-    img: '/assets/images/cheese_chicken.png',
+    img: './assets/images/cheese_chicken.png',
     type: ['meat'],
     dough: {
       thin: {
